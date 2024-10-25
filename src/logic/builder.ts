@@ -1,13 +1,14 @@
 import { capitalize } from "../utils/capitalize";
 import { capitalizeJoin } from "../utils/capitalizeJoin";
+import type { PhoneInfo } from "../utils/filterPhoneInfo";
 
 interface CopyBuilder {
     setBrand(brand: string): CopyBuilder;
     setModel(model: string): CopyBuilder;
     setInfo(info: string): CopyBuilder;
-    setRAM?(ram: number): CopyBuilder;
-    setROM?(rom: number): CopyBuilder;
-    setPrice?(price: number): CopyBuilder;
+    setRAM(ram: number): CopyBuilder;
+    setROM(rom: number): CopyBuilder;
+    setPrice(price: number): CopyBuilder;
     setHashtags(): CopyBuilder; 
     resetBuilder(): void;
 }
@@ -49,8 +50,7 @@ class TelephoneCopyBuilder implements CopyBuilder {
   setPrice(price: number): CopyBuilder {
     this.telephone.price = price;
 		this.copy += 
-		`Precio:
-		${this.telephone.ram}/${this.telephone.rom} $${this.telephone.price}`;
+		`Precio: \n${this.telephone.ram}/${this.telephone.rom} $${this.telephone.price}\n`;
 		return this;
   }
 
@@ -63,7 +63,7 @@ class TelephoneCopyBuilder implements CopyBuilder {
 		this.hashtags.unshift(brand);
 		this.hashtags.unshift(brandModel);
 
-		const hashtagsString = this.hashtags.reduce((acum, curr) => `#${curr} `,"");
+		const hashtagsString = this.hashtags.reduce((acum, curr) => acum + `#${curr} `,"");
 
 		this.copy += hashtagsString;
 		
@@ -82,6 +82,30 @@ class TelephoneCopyBuilder implements CopyBuilder {
 	}
 }
 
+class Director {
+	private _phoneInfo: PhoneInfo | undefined; 
+	constructor(
+		private copyBuilder: CopyBuilder,
+	) {}
+
+	setPhoneInfo(phoneInfo: PhoneInfo) {
+		this._phoneInfo = phoneInfo;
+	}
+
+	constructCopy() {
+		if(this._phoneInfo) {
+			this.copyBuilder
+				.setInfo("Hola mundini\n")
+				.setBrand(this._phoneInfo.brand)
+				.setModel(this._phoneInfo.model)
+				.setRAM(this._phoneInfo.ram)
+				.setROM(this._phoneInfo.rom)
+				.setPrice(this._phoneInfo.price)
+				.setHashtags();
+		}
+	}
+}
+
 class Telephone {
 	brand: string="";
 	model: string="";
@@ -90,4 +114,4 @@ class Telephone {
 	price: number = NaN;
 }
 
-export { TelephoneCopyBuilder };
+export { TelephoneCopyBuilder, Director };
