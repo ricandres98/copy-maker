@@ -1,0 +1,33 @@
+[33mcommit ae8e725b7a793d97163a798665fa11a1682f68e7[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Ricardo <ricardo270298@gmail.com>
+Date:   Wed Oct 30 12:20:38 2024 -0400
+
+    - InputComponent created to separate responsibilities
+    - Result is shown in a textarea element
+    - All Css rules have been reset to default
+
+[33mcommit fe4ee5a6476c2b25db0277c9fe2260bf21518389[m
+Merge: b213137 5adaa2b
+Author: Ricardo <ricardo270298@gmail.com>
+Date:   Fri Oct 25 09:10:20 2024 -0400
+
+    Merge branch 'master' of github.com:ricandres98/copy-maker
+
+[33mcommit 5adaa2b560d1ebcaa46d8e3c7cdec29e5328ab38[m
+Author: Ricardo Ojeda <77307211+ricandres98@users.noreply.github.com>
+Date:   Fri Oct 25 09:09:33 2024 -0400
+
+    Initial commit
+
+[33mcommit b213137aac958882791bee36b5e1b1fbf2519cc4[m
+Author: Ricardo <ricardo270298@gmail.com>
+Date:   Fri Oct 25 09:02:17 2024 -0400
+
+    - Initial prototype completed
+
+[33mcommit 0ecbccd9c8678e5f641278d11979280aff6443b1[m
+Author: Ricardo <ricardo270298@gmail.com>
+Date:   Wed Oct 23 15:25:39 2024 -0400
+
+    - First commit
+    - Builder pattern implementation for copy creation

@@ -1,8 +1,9 @@
-import { useState } from 'react'
-import './App.css'
-import { filterPhoneInfo } from './utils/filterPhoneInfo';
-import { Director, TelephoneCopyBuilderHC } from './logic/builder';
-import { InputComponent } from './components/InputComponent';
+import { useState } from "react";
+import { filterPhoneInfo } from "./utils/filterPhoneInfo";
+import { Director, TelephoneCopyBuilderHC } from "./logic/builder";
+import { InputComponent } from "./components/InputComponent";
+import { ActionButton } from "./components/ActionButton";
+import "./App.css";
 
 function App() {
   const [phone, setPhone] = useState<string>("");
@@ -17,32 +18,46 @@ function App() {
     const copy = copyBuilder.build();
     console.log(copy);
     setFinalCopy(copy);
-  }
+  };
+
+  const reset = () => {
+    setPhone("");
+    setDescription("");
+  };
 
   return (
     <>
-      <div>
-        <InputComponent
-          label="Teléfono"
-          stateValue={phone}
-          setState={setPhone}
-        />
-        <InputComponent
-          label="Descripción"
-          stateValue={description}
-          setState={setDescription}
-        />
-        <button
-          onClick={() => {
-            if (phone && description) run();
-          }}
-        >
-          Test
-        </button>
+      <div className="main-container">
+        <main>
+          <div className="main-container__input-sections">
+            <InputComponent
+              label="Teléfono"
+              stateValue={phone}
+              setState={setPhone}
+            />
+            <InputComponent
+              label="Descripción"
+              stateValue={description}
+              setState={setDescription}
+            />
+            <div className="main-container__buttons">
+              <ActionButton
+                onClick={() => {
+                  if (phone && description) run();
+                }}
+              >
+                Generar
+              </ActionButton>
+              <ActionButton onClick={reset}>Borrar</ActionButton>
+            </div>
+          </div>
+          <textarea 
+            value={finalCopy}
+            onChange={(e) => setFinalCopy(e.target.value)} />
+        </main>
       </div>
-      <textarea name="" id="" value={finalCopy} />
     </>
   );
 }
 
-export default App
+export default App;
