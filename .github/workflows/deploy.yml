@@ -1,0 +1,28 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    runs-on: ubuntu-latest # Sistema en el que correrá nuestro servidor
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Checkout 🛎️ 
+        uses: actions/checkout@v4
+
+      - name: Deploy React to GitHub Pages
+        uses: bitovi/github-actions-react-to-github-pages@v1.2.4
+        with:
+          # Specifies the command to run after the install command for the build
+          build_command: npm run build
+          
