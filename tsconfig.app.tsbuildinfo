@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/ActionButton/index.tsx","./src/components/InputComponent/index.tsx","./src/logic/builder.ts","./src/utils/capitalize.ts","./src/utils/capitalizeJoin.ts","./src/utils/filterPhoneInfo.ts"],"version":"5.6.3"}
