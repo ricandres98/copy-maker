@@ -5,9 +5,10 @@ type PropsType = {
   label: string;
   stateValue: string;
   setState: React.Dispatch<SetStateAction<string>>;
+  placeholder?: string;
 };
 
-const InputComponent = ({label, stateValue, setState}: PropsType): JSX.Element => {
+const InputComponent = ({label, stateValue, setState, placeholder}: PropsType): JSX.Element => {
   return (
     <div className="input-component">
       <label htmlFor={label}>{label}: </label>
@@ -16,6 +17,7 @@ const InputComponent = ({label, stateValue, setState}: PropsType): JSX.Element =
         id={label}
         value={stateValue}
         onChange={(e) => setState(e.target.value)}
+        placeholder={placeholder}
       />
     </div>
   );

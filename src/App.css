@@ -4,13 +4,17 @@
     height: 100vh;
     justify-items: center;
     padding: 2rem;
+    background-color: var(--cyan);
 }
 
 .main-container main {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 100%;
     max-width: 1080px;
-    padding: 1rem; 
+    padding: 2rem; 
+    background-color: var(--white);
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .main-container__input-sections {
@@ -23,6 +27,9 @@
 }
 
 main textarea {
+    display: block;
     width: 500px;
     height: 300px;
+    padding: 1rem;
+    margin: 0 auto;
 }

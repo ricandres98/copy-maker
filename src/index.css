@@ -1,3 +1,11 @@
+:root {
+    --font: "Roboto", sans-serif;
+    --cyan: darkcyan;
+    --cyan-active: hsl(180, 100%, 15%);
+    --white: #f9f9f9;
+    --red: hsl(0, 80%, 35%);
+    --red-active: hsl(0, 90%, 25%);
+}
 * {
     margin: 0;
     padding: 0;
@@ -5,4 +13,5 @@
 }
 html {
     font-size: 62.5%;
+    font-family: var(--font);
 }

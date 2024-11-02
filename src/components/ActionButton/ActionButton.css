@@ -2,4 +2,22 @@
     font-size: 1.6rem;
     padding: .5rem 1rem;
     cursor: pointer;
+    border: none;
+    font-family: var(--font);
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: var(--cyan);
+    color: var(--white);
+}
+
+.action-button:active {
+    background-color: var(--cyan-active);
+}
+
+.action-button--negative {
+    background-color: var(--red);
+}
+
+.action-button--negative:active {
+    background-color: var(--red-active);
 }

@@ -34,6 +34,7 @@ function App() {
               label="Teléfono"
               stateValue={phone}
               setState={setPhone}
+              placeholder="Ej: Samsung S24 Ultra 12/512 GB $980"
             />
             <InputComponent
               label="Descripción"
@@ -48,7 +49,7 @@ function App() {
               >
                 Generar
               </ActionButton>
-              <ActionButton onClick={reset}>Borrar</ActionButton>
+              <ActionButton onClick={reset} negative={true}>Borrar</ActionButton>
             </div>
           </div>
           <textarea 
