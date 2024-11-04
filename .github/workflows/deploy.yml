@@ -30,5 +30,5 @@ jobs:
         uses: bitovi/github-actions-react-to-github-pages@v1.2.4
         with:
           # Specifies the command to run after the install command for the build
-          build_command: npm run build
+          build_command: npm run build --base="/copy-maker/"
           
