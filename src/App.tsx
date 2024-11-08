@@ -4,6 +4,7 @@ import { Director, TelephoneCopyBuilderHC } from "./logic/builder";
 import { InputComponent } from "./components/InputComponent";
 import { ActionButton } from "./components/ActionButton";
 import "./App.css";
+import { CopyToClipboardButton } from "./components/CopyToClipboardButton/CopyToClipboardButton";
 
 function App() {
   const [phone, setPhone] = useState<string>("");
@@ -55,6 +56,10 @@ function App() {
           <textarea 
             value={finalCopy}
             onChange={(e) => setFinalCopy(e.target.value)} />
+
+          <CopyToClipboardButton value={finalCopy}>
+            Copiar al portapapeles
+          </CopyToClipboardButton>
         </main>
       </div>
     </>
