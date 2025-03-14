@@ -34,6 +34,10 @@ class TelephoneCopyBuilderHC implements CopyBuilder {
     return this;
   }
   setBrand(brand: string): CopyBuilder {
+    if (brand.toLowerCase() === "iphone") {
+      this.telephone.brand = "iPhone";
+      return this;
+    }
     this.telephone.brand = brand;
     return this;
   }
@@ -60,15 +64,16 @@ class TelephoneCopyBuilderHC implements CopyBuilder {
 
   setPrice(price: number): CopyBuilder {
     this.telephone.price = price;
-	this.copy += "Precio:";
-	this.setLineBreak();
-    this.copy += this.telephone.ram && this.telephone.rom 
-		? `${this.telephone.ram}/${this.telephone.rom} GB $${this.telephone.price}`
-		: `$${this.telephone.price}`;
-	this.setLineBreak();
+    this.copy += "Precio:";
+    this.setLineBreak();
+    this.copy +=
+      this.telephone.ram && this.telephone.rom
+        ? `${this.telephone.ram}/${this.telephone.rom} GB $${this.telephone.price}`
+        : `$${this.telephone.price}`;
+    this.setLineBreak();
     this.copy += `Precios válidos sólo para pagos en divisas ‼️\n⚠️ También disponible para adquirir en cuotas ⚠️`;
-	this.setLineBreak();
-	this.setLineBreak();
+    this.setLineBreak();
+    this.setLineBreak();
     return this;
   }
 
@@ -86,7 +91,9 @@ class TelephoneCopyBuilderHC implements CopyBuilder {
   }
 
   setHashtags(): CopyBuilder {
-    const brand = capitalize(this.telephone.brand);
+    const brand = this.telephone.brand === "iPhone" 
+      ? this.telephone.brand
+      : capitalize(this.telephone.brand)
     /** Capitalize each word and join them together */
     const model = capitalizeJoin(this.telephone.model);
     const brandModel = brand + model;
@@ -128,15 +135,15 @@ class Director {
     if (this._phoneInfo) {
       this.copyBuilder
         .setInfo(copyInfo)
-		.setLineBreak()
-		.setLineBreak()
+        .setLineBreak()
+        .setLineBreak()
         .setBrand(this._phoneInfo.brand)
         .setModel(this._phoneInfo.model)
         .setRAM(this._phoneInfo.ram)
         .setROM(this._phoneInfo.rom)
         .setPrice(this._phoneInfo.price)
-		.setLocations()
-		.setLineBreak()
+        .setLocations()
+        .setLineBreak()
         .setHashtags();
     }
   }
